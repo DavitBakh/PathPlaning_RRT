@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.widgets import Button
-from rrt.rrt_plus import RRT
+from rrt.rrt_plus import RRTPlus
 
 
 def run_static_2d():
@@ -26,7 +26,7 @@ def run_static_2d():
                 [from_node.coords[1], to_node.coords[1]], "-g", alpha=0.4)
         plt.pause(0.001)
 
-    rrt = RRT(start, goal, bounds, obstacles, step_size=1.0, max_iter=1000)
+    rrt = RRTPlus(start, goal, bounds, obstacles, step_size=1.0, max_iter=1000)
     path = rrt.plan(draw_callback=draw_step)
 
     if path:
@@ -76,7 +76,7 @@ def run_static_3d():
             fig.canvas.draw_idle()
             plt.pause(0.001)
 
-    rrt = RRT(start, goal, bounds, obstacles, step_size=2.0, max_iter=800)
+    rrt = RRTPlus(start, goal, bounds, obstacles, step_size=2.0, max_iter=800)
     path = rrt.plan(draw_callback=draw_step)
 
     tree_line.set_data_3d(xs, ys, zs)
@@ -118,7 +118,7 @@ def run_interactive_2d():
                 [from_node.coords[1], to_node.coords[1]], "-g", alpha=0.4)
         plt.pause(0.001)
 
-    rrt = RRT(start, goal, bounds, obstacles, step_size=1.0, max_iter=1000)
+    rrt = RRTPlus(start, goal, bounds, obstacles, step_size=1.0, max_iter=1000)
     path = rrt.plan(draw_callback=draw_step)
 
     if path:
@@ -188,7 +188,7 @@ def run_custom_draw_2d():
                     [from_node.coords[1], to_node.coords[1]], "-g", alpha=0.4)
             plt.pause(0.001)
 
-        rrt = RRT(start, goal, bounds, drawer.drawn_points, step_size=0.8, obs_type='drawn', clearance=0.6)
+        rrt = RRTPlus(start, goal, bounds, drawer.drawn_points, step_size=0.8, obs_type='drawn', clearance=0.6)
         path = rrt.plan(draw_callback=draw_step)
 
         if path:
