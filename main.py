@@ -182,7 +182,7 @@ def run_interactive_2d():
             ax.plot([coords1[0], coords2[0]], [coords1[1], coords2[1]], color, alpha=0.3)
             plt.pause(0.001)
 
-    rrt = RRTPlus(start, goal, bounds, obstacles, min_step=0.2, max_step=3.0, max_iter=800)
+    rrt = RRTPlus(start, goal, bounds, obstacles, min_step=0.2, max_step=3.0, max_iter=500)
     path, smoothed_path, cost = rrt.plan(draw_callback=draw_step)
 
     if path:
